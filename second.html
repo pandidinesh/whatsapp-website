@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GOOGLE FORM</title>
+<style>
+.mag{
+  opacity:0.5;
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  object-fit:cover;
+}
+.logo {
+  width: 100px; 
+  height: 100px;
+}
+p{
+  color:red;
+}
+form{
+    text-align: center;
+}
+fieldset{
+    
+    padding: 20px;
+    border-radius: 10px
+}
+</style>
+</head>
+
+<body>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuHm-lbEuHs57npYKOTo6Xtp8AYjrOeJRzhg&s" alt="Company Logo" class="mag">
+
+<center>
+    <fieldset>
+<form id="myForm">
+  
+    <h1>ADVANCE MODEL GOOGLE CLASS ROOM</h1>
+
+    <!-- Name -->
+    <div>
+      <label for="nameInput">Name:</label>
+      <input type="text" id="nameInput" name="name" placeholder="Enter the name" required>
+      <p id="nameError"></p>
+    </div>
+    <br>
+
+    <!-- Email -->
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="user_email" placeholder="Enter the email id" required>
+    </div>
+    <br>
+
+    <!-- Gender -->
+    <div>
+      <label>Gender:</label><br>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">Male</label>
+
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">Female</label>
+
+      <input type="radio" id="other" name="gender" value="other">
+      <label for="other">Other</label>
+    </div>
+    <br>
+
+    <!-- Phone -->
+    <div>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+    </div>
+    <br>
+
+    <!-- Degree -->
+    <div>
+      <label>Degree:</label>
+      <input type="radio" id="BE" name="degree" value="BE">
+      <label for="BE">BE</label>
+
+      <input type="radio" id="BTECH" name="degree" value="BTECH">
+      <label for="BTECH">BTECH</label>
+    </div>
+    <br>
+
+    <!-- Branch -->
+    <div>
+      <label>Branch:</label>
+      <select name="branch">
+        <option value="CSE">CSE</option>
+        <option value="IT">IT</option>
+        <option value="EEE">EEE</option>
+        <option value="ECE">ECE</option>
+      </select>
+    </div>
+    <br>
+
+    <!-- Age -->
+    <div>
+      <label>Age:</label>
+      <input type="number" id="age" placeholder="AGE MUST BE POSITIVE">
+      <p id="ageError"></p>
+    </div>
+    <br>
+
+    <!-- Address -->
+    <div>
+      <label>Address:</label>
+      <input type="text" id="address" placeholder="Enter the address">
+    </div>
+    <br>
+
+    <!-- Aadhar -->
+    <div>
+      <label>Aadhar Number:</label>
+      <input type="tel" id="aadhar" placeholder="1234-4567-8890-1111">
+    </div>
+    <br>
+
+    <!-- Password -->
+    <div>
+      <label>New Password:</label>
+      <input type="password" id="password" placeholder="Enter the new password">
+    </div>
+    <br>
+
+    <div>
+      <label>Confirm Password:</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm the password">
+    </div>
+    <br>
+
+    <!-- College -->
+    <div>
+      <label>College Name:</label>
+      <input type="text" id="college" placeholder="Enter the college name">
+    </div>
+    <br>
+
+    <!-- District -->
+    <div>
+      <label>District:</label>
+      <select name="district">
+        <option value="MADURAI">MADURAI</option>
+        <option value="THENI">THENI</option>
+        <option value="COIMBATORE">COIMBATORE</option>
+        <option value="THIRUCHI">THIRUCHI</option>
+        <option value="DINDUGAL">DINDUGAL</option>
+        <option value="SIVAGASHI">SIVAGASHI</option>
+      </select>
+    </div>
+    <br>
+
+    <!-- State -->
+    <div>
+      <label>State:</label>
+      <select name="state">
+        <option value="TAMILNADU">TAMILNADU</option>
+        <option value="KERALA">KERALA</option>
+        <option value="KARNATAKA">KARNATAKA</option>
+        <option value="GOA">GOA</option>
+        <option value="GUJARATH">GUJARATH</option>
+        <option value="RAJASTHAN">RAJASTHAN</option>
+      </select>
+    </div>
+    <br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+  </fieldset>
+</form>
+
+<p id="result"></p>
+
+<script>
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', function(e) {
+  let errorMessages = [];
+
+  const name = document.getElementById('nameInput').value.trim();
+  const age = parseInt(document.getElementById('age').value);
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  // Name validation
+  if(name === "" || name.length > 20){
+    errorMessages.push("Ippo ethachum error irukku: Name must be 1-20 chars");
+  }
+
+  // Age validation
+  if(isNaN(age) || age <= 0){
+    errorMessages.push("Ippo ethachum error irukku: Enter valid age");
+  } else if(age < 18){
+    errorMessages.push("Not eligible for vote");
+  }
+
+  // Password match
+  if(password !== confirmPassword){
+    errorMessages.push("Passwords mismatch");
+  }
+
+  if(errorMessages.length > 0){
+    e.preventDefault(); // stop form submit
+    alert(errorMessages.join("\n")); // show all errors in one alert
+  }
+});
+</script>
+
+</center>
+</body>
+</html>
